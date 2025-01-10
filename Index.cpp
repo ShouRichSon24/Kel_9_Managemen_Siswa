@@ -25,7 +25,7 @@ int main() {
     
     //Menampilkan Hasil
     printf("\nPenjualan per produk:\n");
-    for(int i = 0; i < 5; i++) {
+    for(int i = 0; i < 5; i++) {67
         printf("%s: %d\n", namaBarang[i], penjualan[i]);
     }
     printf("Total penjualan: %d\n", totalPenjualan);
