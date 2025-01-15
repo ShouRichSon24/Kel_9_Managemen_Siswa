@@ -31,7 +31,7 @@ int jumlahMataKuliah = 0;
 Siswa daftarSiswa[MAX_SISWA];
 int jumlahSiswa = 0;
 
-void tambahMataKuliah() {
+int tambahMataKuliah() {
     MataKuliah mk;
     printf("Masukkan nama mata kuliah: ");
     scanf("%s", mk.namaMataKuliah);
@@ -50,7 +50,7 @@ void tambahMataKuliah() {
     printf("Mata kuliah berhasil ditambahkan.\n");
 }
 
-void inputMataKuliah() {
+int inputMataKuliah() {
     char pilihan;
     do {
         tambahMataKuliah();
@@ -59,7 +59,7 @@ void inputMataKuliah() {
     } while (pilihan == 'y' || pilihan == 'Y');
 }
 
-void tambahSiswa() {
+int tambahSiswa() {
     Siswa s;
     printf("Masukkan nama siswa: ");
     scanf("%s", s.nama);
@@ -90,7 +90,7 @@ void tambahSiswa() {
     printf("Data siswa berhasil ditambahkan.\n");
 }
 
-void inputSiswa() {
+int inputSiswa() {
     char pilihan;
     do {
         tambahSiswa();
@@ -99,7 +99,7 @@ void inputSiswa() {
     } while (pilihan == 'y' || pilihan == 'Y');
 }
 
-void tampilkanHasil() {
+int tampilkanHasil() {
     printf("\n=== LIST SISWA ===\n");
     for (int i = 0; i < jumlahSiswa; i++) {
         printf("\nData Siswa: %s (NPM: %s, Prodi: %s)\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].prodi);
@@ -114,14 +114,14 @@ void tampilkanHasil() {
     printf("\n=== Siswa yang Lulus ===\n");
     for (int i = 0; i < jumlahSiswa; i++) {
         if (daftarSiswa[i].lulus) {
-            printf("%s (NPM: %s) - Rata-rata: %.2f\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].rataRata);
+            printf("%s (NPM: %s) - Rata-rata Nilai: %.2f\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].rataRata);
         }
     }
 
     printf("\n=== Siswa yang Tidak Lulus ===\n");
     for (int i = 0; i < jumlahSiswa; i++) {
         if (!daftarSiswa[i].lulus) {
-            printf("%s (NPM: %s) - Rata-rata: %.2f\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].rataRata);
+            printf("%s (NPM: %s) - Rata-rata Nilai: %.2f\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].rataRata);
         }
     }
 }
