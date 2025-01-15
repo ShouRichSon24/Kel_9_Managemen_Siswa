@@ -33,6 +33,7 @@ int jumlahSiswa = 0;
 
 int tambahMataKuliah() {
     MataKuliah mk;
+    printf("==========================\n");
     printf("Masukkan nama mata kuliah: ");
     scanf("%s", mk.namaMataKuliah);
     printf("Masukkan syarat nilai UAS: ");
@@ -61,6 +62,7 @@ int inputMataKuliah() {
 
 int tambahSiswa() {
     Siswa s;
+    printf("==========================\n");
     printf("Masukkan nama siswa: ");
     scanf("%s", s.nama);
     printf("Masukkan NPM: ");
@@ -128,7 +130,8 @@ int tampilkanHasil() {
 
 int main() {
     char pilihan;
-
+    
+    printf("Selamat Datang DI Aplikasi Menejemen Siswa \n");
     printf("=== Input Mata Kuliah ===\n");
     inputMataKuliah();
 
