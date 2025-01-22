@@ -2,17 +2,17 @@
 #include <string.h>
 #include <cstdlib>
 
-#define MAX_MATA_KULIAH 10
+#define MAX_MATA_PELAJARAN 10
 #define MAX_SISWA 100
 
 typedef struct {
-    char namaMataKuliah[50];
+    char namaMataPelajaran[50];
     float syaratUAS;
     float syaratUTS;
     float syaratTugas;
     float syaratPresensi;
     float syaratQuizz;
-} MataKuliah;
+} MataPelajaran;
 
 typedef struct {
     char nama[50];
@@ -27,39 +27,47 @@ typedef struct {
     int lulus; 
 } Siswa;
 
-MataKuliah daftarMataKuliah[MAX_MATA_KULIAH];
-int jumlahMataKuliah = 0;
+MataPelajaran daftarMataPelajaran[MAX_MATA_PELAJARAN];
+int jumlahMataPelajaran = 0;
 Siswa daftarSiswa[MAX_SISWA];
 int jumlahSiswa = 0;
 
-int tambahMataKuliah() {
-    MataKuliah mk;
-    printf("==========================\n");
+void clearScreen() {
+#ifdef _WIN32
+    system("cls"); 
+#endif
+}
+
+int tambahMataPelajaran(){
+    MataPelajaran mp;
+    printf("============================\n");
     printf("Masukkan nama mata pelajaran: ");
-    scanf("%s", mk.namaMataKuliah);
+    scanf("%s", mp.namaMataPelajaran);
     printf("Masukkan syarat nilai UAS: ");
-    scanf("%f", &mk.syaratUAS);
+    scanf("%f", &mp.syaratUAS);
     printf("Masukkan syarat nilai UTS: ");
-    scanf("%f", &mk.syaratUTS);
+    scanf("%f", &mp.syaratUTS);
     printf("Masukkan syarat nilai Tugas: ");
-    scanf("%f", &mk.syaratTugas);
+    scanf("%f", &mp.syaratTugas);
     printf("Masukkan syarat nilai Presensi: ");
-    scanf("%f", &mk.syaratPresensi);
+    scanf("%f", &mp.syaratPresensi);
     printf("Masukkan syarat nilai Quizz: ");
-    scanf("%f", &mk.syaratQuizz);
+    scanf("%f", &mp.syaratQuizz);
     
-    daftarMataKuliah[jumlahMataKuliah++] = mk;
-    printf("Mata kuliah berhasil ditambahkan.\n");
+    daftarMataPelajaran[jumlahMataPelajaran++] = mp;
+    printf("Mata pelajaran berhasil ditambahkan.\n");
 }
 
 int inputMataKuliah() {
     char pilihan;
     do {
-        tambahMataKuliah();
+        tambahMataPelajaran();
         printf("Apakah ada mata pelajaran lain? (y/n): ");
         scanf(" %c", &pilihan);
-    } while (pilihan == 'y' || pilihan == 'Y');
-}
+    } while (pilihan == 'y' || pilihan == 'Y');  
+    clearScreen();
+} 
+    
 
 int tambahSiswa() {
     Siswa s;
@@ -71,8 +79,8 @@ int tambahSiswa() {
     printf("Masukkan Jurusan: ");
     scanf("%s", s.prodi);
 
-    for (int i = 0; i < jumlahMataKuliah; i++) {
-        printf("Masukkan nilai untuk mata pelajaran %s:\n", daftarMataKuliah[i].namaMataKuliah);
+    for (int i = 0; i < jumlahMataPelajaran; i++) {
+        printf("Masukkan nilai untuk mata pelajaran %s:\n", daftarMataPelajaran[i].namaMataPelajaran);
         printf("Nilai UAS: ");
         scanf("%f", &s.nilaiUAS);
         printf("Nilai UTS: ");
@@ -100,12 +108,14 @@ int inputSiswa() {
         printf("Apakah ada data siswa lain? (y/n): ");
         scanf(" %c", &pilihan);
     } while (pilihan == 'y' || pilihan == 'Y');
+    clearScreen();
 }
-    system("cls");
+    
+
 int tampilkanHasil() {
     printf("\n=== LIST SISWA ===\n");
     for (int i = 0; i < jumlahSiswa; i++) {
-        printf("\nData Siswa: %s (NPM: %s, Prodi: %s)\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].prodi);
+        printf("\nData Siswa: %s (NPM: %s, Jurusan: %s)\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].prodi);
         printf("Nilai UAS: %.2f\n", daftarSiswa[i].nilaiUAS);
         printf("Nilai UTS: %.2f\n", daftarSiswa[i].nilaiUTS);
         printf("Nilai Tugas: %.2f\n", daftarSiswa[i].nilaiTugas);
@@ -131,12 +141,11 @@ int tampilkanHasil() {
 
 int main() {
     char pilihan;
-    
-    printf("Selamat Datang DI Aplikasi Menejemen Siswa \n");
-    printf("=== Input Mata Kuliah ===\n");
+    printf("Selamat Datang Di Aplikasi Menejemen Siswa \n");
+    printf("=== Input Mata Pelajaran ===\n");
     inputMataKuliah();
 
-    printf("\n=== Input Data Siswa ===\n");
+    printf("\n==== Input Data Siswa ====\n");
     inputSiswa();
 
     tampilkanHasil();
