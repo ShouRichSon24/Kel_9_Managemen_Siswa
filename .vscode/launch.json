@@ -1,26 +1,44 @@
 {
-  "timestamp": "2025-01-10T10:00:00Z",
-  "level": "error",
-  "message": "An unexpected error occurred",
-  "context": {
-    "function": "getUserData",
-    "file": "userService.js",
-    "line": 45
-  },
-  "errorDetails": {
-    "type": "TypeError",
-    "message": "Cannot read property 'name' of undefined",
-    "stackTrace": [
-      "at getUserData (userService.js:45:20)",
-      "at main (app.js:12:5)"
-    ]
-  },
-  "meta": {
-    "userId": 12345,
-    "sessionId": "abc123",
-    "environment": "production"
-  },
- 
-    
-  
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug C++",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": true,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "Build C++"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/xampp/htdocs/Kel_9_Managemen_Siswa",
+      "program": "c:/xampp/htdocs/Kel_9_Managemen_Siswa/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
 }
