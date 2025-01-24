@@ -110,31 +110,44 @@ int inputSiswa() {
     } while (pilihan == 'y' || pilihan == 'Y');
     clearScreen();
 }
-    
+
+   char nilaiKeBobot(float nilai) {
+    if (nilai >= 80) {
+        return 'A';
+    } else if (nilai >= 70) {
+        return 'B';
+    } else if (nilai >= 60) {
+        return 'C';
+    } else if (nilai >= 45) {
+        return 'D';
+    } else {
+        return 'E';
+    }
+} 
 
 int tampilkanHasil() {
     printf("\n=== LIST SISWA ===\n");
     for (int i = 0; i < jumlahSiswa; i++) {
         printf("\nData Siswa: %s (NPM: %s, Jurusan: %s)\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].prodi);
-        printf("Nilai UAS: %.2f\n", daftarSiswa[i].nilaiUAS);
-        printf("Nilai UTS: %.2f\n", daftarSiswa[i].nilaiUTS);
-        printf("Nilai Tugas: %.2f\n", daftarSiswa[i].nilaiTugas);
-        printf("Nilai Presensi: %.2f\n", daftarSiswa[i].nilaiPresensi);
-        printf("Nilai Quizz: %.2f\n", daftarSiswa[i].nilaiQuizz);
-        printf("Rata-rata: %.2f\n", daftarSiswa[i].rataRata);
+        printf("Nilai UAS: %.2f || Bobot Nilai: %c \n", daftarSiswa[i].nilaiUAS, nilaiKeBobot(daftarSiswa[i].nilaiUAS));
+        printf("Nilai UTS: %.2f || Bobot Nilai: %c\n", daftarSiswa[i].nilaiUTS, nilaiKeBobot(daftarSiswa[i].nilaiUTS));
+        printf("Nilai Tugas: %.2f || Bobot Nilai: %c\n", daftarSiswa[i].nilaiTugas, nilaiKeBobot(daftarSiswa[i].nilaiTugas));
+        printf("Nilai Presensi: %.2f || Bobot Nilai: %c\n", daftarSiswa[i].nilaiPresensi, nilaiKeBobot(daftarSiswa[i].nilaiPresensi));
+        printf("Nilai Quizz: %.2f || Bobot Nilai: %c\n", daftarSiswa[i].nilaiQuizz, nilaiKeBobot(daftarSiswa[i].nilaiQuizz));
+        printf("Rata-rata: %.2f || Bobot Nilai: %c\n", daftarSiswa[i].rataRata, nilaiKeBobot(daftarSiswa[i].rataRata));
     }
 
     printf("\n=== Siswa yang Lulus ===\n");
     for (int i = 0; i < jumlahSiswa; i++) {
         if (daftarSiswa[i].lulus) {
-            printf("%s (NPM: %s) - Rata-rata Nilai: %.2f\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].rataRata);
+            printf("%s (NPM: %s) - Rata-rata Nilai: %.2f || Bobot Nilai: %c\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].rataRata,nilaiKeBobot(daftarSiswa[i].rataRata));
         }
     }
 
     printf("\n=== Siswa yang Tidak Lulus ===\n");
     for (int i = 0; i < jumlahSiswa; i++) {
         if (!daftarSiswa[i].lulus) {
-            printf("%s (NPM: %s) - Rata-rata Nilai: %.2f\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].rataRata);
+            printf("%s (NPM: %s) - Rata-rata Nilai: %.2f || Bobot Nilai: %c\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].rataRata,nilaiKeBobot(daftarSiswa[i].rataRata));
         }
     }
 }
