@@ -58,7 +58,7 @@ int tambahMataPelajaran(){
     printf("Mata pelajaran berhasil ditambahkan.\n");
 }
 
-int inputMataKuliah() {
+int inputMataPelajaran() {
     char pilihan;
     do {
         tambahMataPelajaran();
@@ -156,7 +156,7 @@ int main() {
     char pilihan;
     printf("Selamat Datang Di Aplikasi Menejemen Siswa \n");
     printf("=== Input Mata Pelajaran ===\n");
-    inputMataKuliah();
+    inputMataPelajaran();
 
     printf("\n==== Input Data Siswa ====\n");
     inputSiswa();
