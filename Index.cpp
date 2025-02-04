@@ -95,7 +95,7 @@ int tambahSiswa() {
 
         // Hitung rata-rata nilai
         float rataRata = 0;
-        float syaratLulus = 75.00;
+        float syaratLulus = 60.00;
         for (int k = 0; k < jumlahMataPelajaran; k++)
         {
             /* code */
@@ -159,9 +159,12 @@ int tampilkanHasil() {
     }
 
     printf("\n=== Siswa yang Lulus ===\n");
+    float rataRata = 0;
+    float syaratLulus = 60.00;
     for (int i = 0; i < jumlahSiswa; i++) {
         if (daftarSiswa[i].lulus) {
-            printf("%s (NPM: %s) - Rata-rata Nilai: %.2f || Bobot Nilai: %c\n", daftarSiswa[i].nama, daftarSiswa[i].npm, daftarSiswa[i].rataRata, nilaiKeBobot(daftarSiswa[i].rataRata));
+            float formatRataRata = daftarSiswa[i].rataRata > 100.00 ? 100.00 : daftarSiswa[i].rataRata;
+            printf("%s (NPM: %s) - Rata-rata Nilai: %.2f || Bobot Nilai: %c\n", daftarSiswa[i].nama, daftarSiswa[i].npm, formatRataRata, nilaiKeBobot(daftarSiswa[i].rataRata));
         }
     }
 
