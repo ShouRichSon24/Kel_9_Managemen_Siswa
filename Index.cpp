@@ -2,16 +2,11 @@
 #include <string.h>
 #include <cstdlib>
 
-#define MAX_MATA_PELAJARAN 10
+#define MAX_MATA_PELAJARAN 100
 #define MAX_SISWA 100
 
 typedef struct {
     char namaMataPelajaran[50];
-    float syaratUAS;
-    float syaratUTS;
-    float syaratTugas;
-    float syaratPresensi;
-    float syaratQuizz;
 } MataPelajaran;
 
 typedef struct {
@@ -31,8 +26,6 @@ int jumlahSiswa = 0;
 void clearScreen() {
 #ifdef _WIN32
     system("cls"); 
-#else
-    system("clear");
 #endif
 }
 
@@ -41,16 +34,6 @@ int tambahMataPelajaran() {
     printf("============================\n");
     printf("Masukkan nama mata pelajaran: ");
     scanf("%s", mp.namaMataPelajaran);
-    printf("Masukkan syarat nilai UAS: ");
-    scanf("%f", &mp.syaratUAS);
-    printf("Masukkan syarat nilai UTS: ");
-    scanf("%f", &mp.syaratUTS);
-    printf("Masukkan syarat nilai Tugas: ");
-    scanf("%f", &mp.syaratTugas);
-    printf("Masukkan syarat nilai Presensi: ");
-    scanf("%f", &mp.syaratPresensi);
-    printf("Masukkan syarat nilai Quizz: ");
-    scanf("%f", &mp.syaratQuizz);
     
     daftarMataPelajaran[jumlahMataPelajaran++] = mp;
     printf("Mata pelajaran berhasil ditambahkan.\n");
@@ -95,7 +78,7 @@ int tambahSiswa() {
 
         // Hitung rata-rata nilai
         float rataRata = 0;
-        float syaratLulus = 60.00;
+        float syaratLulus = 59.00;
         for (int k = 0; k < jumlahMataPelajaran; k++)
         {
         s.rataRata = rataRata += (s.nilai[k][0] + s.nilai[k][1] + s.nilai[k][2] + s.nilai[k][3] + s.nilai[k][4]) / (5 *jumlahMataPelajaran);
