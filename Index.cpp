@@ -98,17 +98,18 @@ int tambahSiswa() {
         float syaratLulus = 60.00;
         for (int k = 0; k < jumlahMataPelajaran; k++)
         {
-        s.rataRata = rataRata += (s.nilai[k][0] + s.nilai[k][1] + s.nilai[k][2] + s.nilai[k][3] + s.nilai[k][4]) / (5 * jumlahMataPelajaran);
+        s.rataRata = rataRata += (s.nilai[k][0] + s.nilai[k][1] + s.nilai[k][2] + s.nilai[k][3] + s.nilai[k][4]) / (5 *jumlahMataPelajaran);
         }
+        
+
         // Cek kelulusan berdasarkan syarat mata pelajaran
-        if (s.nilai[i][0] < daftarMataPelajaran[i].syaratUAS ||
-            s.nilai[i][1] < daftarMataPelajaran[i].syaratUTS ||
-            s.nilai[i][2] < daftarMataPelajaran[i].syaratTugas ||
-            s.nilai[i][3] < daftarMataPelajaran[i].syaratPresensi ||
-            s.nilai[i][4] < daftarMataPelajaran[i].syaratQuizz) {
+        
+        if (s.rataRata <= syaratLulus ) {
             s.lulus = 0; // Jika salah satu nilai tidak memenuhi syarat, set lulus ke 0
         }
+        
     }
+
     daftarSiswa[jumlahSiswa++] = s;
     printf("Data siswa berhasil ditambahkan.\n");
 }
